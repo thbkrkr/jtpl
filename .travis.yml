@@ -1,0 +1,24 @@
+language: go
+
+go:
+- 1.8.3
+install: true
+
+env:
+  matrix:
+  - NAME=jtpl
+
+script: CGO_ENABLED=0 go build; test/main.sh
+
+deploy:
+  provider: releases
+  api_key: $GH_TOKEN
+  file: $NAME
+  skip_cleanup: true
+  on:
+    tags: true
+
+notifications:
+  email:
+    recipients:
+    - thb.krkr+travis-jtpl@gmail.com
