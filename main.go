@@ -42,13 +42,15 @@ func main() {
 }
 
 func readJSONFromEnv() []byte {
-	data := os.Getenv("JTPL_JSON_DATA")
-	bytes := []byte(data)
+	bytes, err := ioutil.ReadAll(os.Stdin)
+	if err != nil {
+		logrus.Fatal("Fail to read stdin")
+	}
 
 	var obj interface{}
-	err := json.Unmarshal(bytes, &obj)
+	err = json.Unmarshal(bytes, &obj)
 	if err != nil {
-		logrus.Fatal("Fail to parse JSON from JTPL_JSON_DATA env var")
+		logrus.Fatal("Fail to parse JSON from stdin")
 	}
 
 	return bytes
