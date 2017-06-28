@@ -1,0 +1,6 @@
+# A test template
+
+ssl /etc/ssl/my.domain
+
+server api1 api1.my.domain:42
+server api2 api2.my.domain:42

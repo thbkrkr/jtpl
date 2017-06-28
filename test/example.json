@@ -1,0 +1,13 @@
+{
+    "SSLPath":"/etc/ssl/my.domain",
+    "Servers": [
+      {
+        "Name": "api1",
+        "Url": "api1.my.domain:42"
+      },
+      {
+        "Name": "api2",
+        "Url": "api2.my.domain:42"
+      }
+    ]
+}
