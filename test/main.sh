@@ -3,7 +3,7 @@
 test_jtpl() {
   declare name="$1"
 
-  result=$(JTPL_JSON_DATA=$(jq -c . test/$name.json) ./jtpl -f test/$name.tpl)
+  result=$(jq -c . test/$name.json | ./jtpl -f test/$name.tpl)
   expected=$(cat test/$name.expected)
 
   if [[ "$result" != "$expected" ]]; then
