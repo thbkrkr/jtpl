@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"flag"
 	"html/template"
-	"io/ioutil"
+	"io"
 	"os"
 
-	"github.com/Sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 var (
@@ -42,7 +42,7 @@ func main() {
 }
 
 func readJSONFromEnv() []byte {
-	bytes, err := ioutil.ReadAll(os.Stdin)
+	bytes, err := io.ReadAll(os.Stdin)
 	if err != nil {
 		logrus.Fatal("Fail to read stdin")
 	}
@@ -57,7 +57,7 @@ func readJSONFromEnv() []byte {
 }
 
 func readTpl(tplFilename string) string {
-	bytes, err := ioutil.ReadFile(tplFilename)
+	bytes, err := os.ReadFile(tplFilename)
 	if err != nil {
 		logrus.Fatal("Fail to read template file " + tplFilename)
 	}
